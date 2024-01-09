@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         amountLabel.pen = Pen(font: UIFont(name: "Optima", size: 144*s)!, color: .white, alignment: .center)
         view.addSubview(amountLabel)
         
-        successButton.backgroundColor = .orange.shade(0.0)
+        successButton.backgroundColor = UIColor(patternImage: UIImage(named: "Flame")!)
         successButton.layer.cornerRadius = 10*s
         buttonBar.addSubview(successButton)
         successButton.addAction {
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
             self.loadSpecimen()
         }
 
-        failureButton.backgroundColor = .red.shade(0.0)
+        failureButton.backgroundColor = UIColor(rgb: 0xFF0202)
         failureButton.layer.cornerRadius = 10*s
         buttonBar.addSubview(failureButton)
         failureButton.addAction {
@@ -67,12 +67,12 @@ class ViewController: UIViewController {
         loadSpecimen()
     }
     override func viewDidLayoutSubviews() {
-        amountLabel.top(dy: 100*s, size: CGSize(width: 300*s, height: 256*s))
-        buttonBar.top(dy: amountLabel.bottom + 30*s, width: 256*s, height:64*s)
+        amountLabel.top(dy: 100*s, size: CGSize(width: 300*s, height: 200*s))
+        buttonBar.top(dy: amountLabel.bottom + 8*s, width: 256*s, height:64*s)
         
         successButton.left(width: (256-64-16)*s, height: 64*s)
         failureButton.right(width: 64*s, height: 64*s)
         retsuButton.bottom(dy: -100-Screen.safeBottom, width: 80*s, height: 80*s)
-        retsuInfo.top(dy: retsuButton.top-200*s, width: 280*s, height: 140*s)
+        retsuInfo.top(dy: retsuButton.top-170*s, width: 280*s, height: 140*s)
     }
 }

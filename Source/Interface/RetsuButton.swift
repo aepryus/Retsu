@@ -9,7 +9,7 @@ import Acheron
 import UIKit
 
 class RetsuButton: UIControl {
-    let imageView: UIImageView = UIImageView(image: UIImage(named: "AppIcon")!)
+    let imageView: UIImageView = UIImageView(image: UIImage(named: "FirePunch")!)
     
     init() {
         super.init(frame: .zero)

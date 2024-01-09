@@ -9,26 +9,27 @@
 import UIKit
 
 class RetsuInfo: UIView {
-    let innerView: UIView = UIView()
+    let topView: UIImageView = UIImageView(image: UIImage(named: "Flame")!)
+    let bottomView: UIImageView = UIImageView(image: UIImage(named: "Flame")!)
     
     init() {
         super.init(frame: .zero)
         
-        backgroundColor = .red.shade(0.76)
+        topView.layer.cornerRadius = 2*s
+        topView.layer.masksToBounds = true
+        topView.contentMode = .scaleToFill
+        addSubview(topView)
         
-        layer.cornerRadius = 10*s
-//        layer.borderColor = UIColor.red.shade(0.0).cgColor
-//        layer.borderWidth = 1*s
-//        
-//        innerView.layer.cornerRadius = 8*s
-//        innerView.layer.borderColor = UIColor.orange.tint(0.3).cgColor
-//        innerView.layer.borderWidth = 1*s
-        addSubview(innerView)
+        bottomView.layer.cornerRadius = 2*s
+        bottomView.layer.masksToBounds = true
+        bottomView.contentMode = .scaleToFill
+        addSubview(bottomView)
     }
     required init?(coder: NSCoder) { fatalError() }
     
 // UIView ==========================================================================================
     override func layoutSubviews() {
-        innerView.center(width: width-6*s, height: height-6*s)
+        topView.top(width: width, height: 4*s)
+        bottomView.bottom(width: width, height: 4*s)
     }
 }
