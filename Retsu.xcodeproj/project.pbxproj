@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D87DC0C92B4CE26600FACE1A /* RetsuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87DC0C82B4CE26600FACE1A /* RetsuButton.swift */; };
+		D87DC0CD2B4CE5EE00FACE1A /* RetsuInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87DC0CC2B4CE5EE00FACE1A /* RetsuInfo.swift */; };
 		D8CE70502AF9E3AC00123E27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8CE70432AF9E3AC00123E27 /* Assets.xcassets */; };
 		D8CE70512AF9E3AC00123E27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8CE70442AF9E3AC00123E27 /* LaunchScreen.storyboard */; };
 		D8CE70532AF9E3AC00123E27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CE70482AF9E3AC00123E27 /* AppDelegate.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D87DC0C82B4CE26600FACE1A /* RetsuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetsuButton.swift; sourceTree = "<group>"; };
+		D87DC0CC2B4CE5EE00FACE1A /* RetsuInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetsuInfo.swift; sourceTree = "<group>"; };
 		D8CE702B2AF9DFA200123E27 /* Retsu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Retsu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8CE70432AF9E3AC00123E27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8CE70452AF9E3AC00123E27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		D8CE704A2AF9E3AC00123E27 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				D87DC0CC2B4CE5EE00FACE1A /* RetsuInfo.swift */,
+				D87DC0C82B4CE26600FACE1A /* RetsuButton.swift */,
 				D8CE704B2AF9E3AC00123E27 /* ViewController.swift */,
 			);
 			path = Interface;
@@ -150,6 +156,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
+				ORGANIZATIONNAME = "Aepryus Software";
 				TargetAttributes = {
 					D8CE702A2AF9DFA200123E27 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -197,7 +204,9 @@
 				D8F616602AFB64EC001F3890 /* Day.swift in Sources */,
 				D8CE70582AF9E3AC00123E27 /* Era.swift in Sources */,
 				D8CE70552AF9E3AC00123E27 /* ViewController.swift in Sources */,
+				D87DC0C92B4CE26600FACE1A /* RetsuButton.swift in Sources */,
 				D8CE70542AF9E3AC00123E27 /* Retsu.swift in Sources */,
+				D87DC0CD2B4CE5EE00FACE1A /* RetsuInfo.swift in Sources */,
 				D8CE70562AF9E3AC00123E27 /* Trial.swift in Sources */,
 				D8CE70532AF9E3AC00123E27 /* AppDelegate.swift in Sources */,
 				D8CE70572AF9E3AC00123E27 /* Specimen.swift in Sources */,

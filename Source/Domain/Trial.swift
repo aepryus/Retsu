@@ -15,6 +15,7 @@ class Trial: Domain {
     @objc dynamic var amount: Int = 1
     @objc dynamic var recorded: Date? = nil
     @objc dynamic var resultToken: String = "success"
+    @objc dynamic var onTime: Bool = false
     
     var result: Result {
         set { resultToken = newValue.toString() }
@@ -22,5 +23,5 @@ class Trial: Domain {
     }
     
 // Domain ==========================================================================================
-    override var properties: [String] { super.properties + ["day", "amount", "recorded", "resultToken"] }
+    override var properties: [String] { super.properties + ["day", "amount", "recorded", "resultToken", "onTime"] }
 }

@@ -12,6 +12,8 @@ class Retsu {
     static let window: UIWindow = UIWindow()
     static var specimen: Specimen!
     
+    static var era: Era { specimen.currentEra }
+    
     static func start() {
         print("[ Retsu ] ======================================================================")
 

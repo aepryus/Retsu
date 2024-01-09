@@ -10,19 +10,21 @@ import Foundation
 
 class Era: Domain {
     @objc dynamic var name: String = ""
-    @objc dynamic var goal: Int = 60
+    @objc dynamic var target: Int = 60
     @objc dynamic var upAmount: Int = 2
     @objc dynamic var downAmount: Int = 5
     @objc dynamic var active: Bool = true
     @objc dynamic var headingUp: Bool = true
     @objc dynamic var firstDay: Day = .today
-    @objc dynamic var nextTrialDay: Day = .today
-    @objc dynamic var nextTrialAmount: Int = 1
-    @objc dynamic var highestAmount: Int = 100
+    @objc dynamic var nextDay: Day = .today
+    @objc dynamic var nextAmount: Int = 1
+    @objc dynamic var highestAmount: Int = 0
+    @objc dynamic var currentStreak: Int = 0
+    @objc dynamic var highestStreak: Int = 0
 
     @objc dynamic var trials: [Trial] = []
     
-    var isCaughtUp: Bool { nextTrialDay > .today }
+    var isCaughtUp: Bool { nextDay > .today }
     
     func add(trial: Trial) {
         trials.append(trial)
@@ -32,37 +34,55 @@ class Era: Domain {
     func recordTrial(result: Trial.Result) {
         if trials.count == 0 {
             firstDay = .today
-            nextTrialDay = .today
-            nextTrialAmount = 1
+            nextDay = .today
+            nextAmount = 1
             headingUp = false
         }
         
         let trial: Trial = Trial()
-        trial.day = nextTrialDay
-        trial.amount = nextTrialAmount
+        trial.day = nextDay
+        trial.amount = nextAmount
         trial.recorded = .now
         trial.result = result
+        trial.onTime = (nextDay == Day.today)
         add(trial: trial)
         
         if headingUp {
-            if result == .failure || (nextTrialDay < .today && nextTrialAmount > goal) { headingUp = false }
+            if result == .failure || (nextDay < .today && nextAmount > target) { headingUp = false }
         } else {
-            if nextTrialAmount == 1 { headingUp = true }
+            if nextAmount == 1 { headingUp = true }
         }
         
-        nextTrialDay = nextTrialDay.dayAfter
+        if trial.onTime { currentStreak += 1 }
+        else { currentStreak = 0 }
         
-        if result == .success && nextTrialAmount > highestAmount { highestAmount = nextTrialAmount }
+        if currentStreak > highestStreak { highestStreak = currentStreak }
+        
+        nextDay = nextDay.dayAfter
+        
+        if result == .success && nextAmount > highestAmount { highestAmount = nextAmount }
         
         if headingUp {
-            if nextTrialAmount < highestAmount { nextTrialAmount += upAmount }
-            else { nextTrialAmount += 1 }
+            if nextAmount < highestAmount { nextAmount += upAmount }
+            else { nextAmount += 1 }
         } else {
-            nextTrialAmount = 1 + ((nextTrialAmount / downAmount) - 1) * downAmount
+            nextAmount = 1 + ((nextAmount / downAmount) - 1) * downAmount
         }
+    }
+    func report() {
+        print("era name: \(name)")
+        print("started: \(firstDay)")
+        print("target: \(target)")
+        print("next: \(nextAmount)")
+        print("is caught up: \(isCaughtUp)")
+        print("trials to go: \(Day.tomorrow-nextDay)")
+        print("highest: \(highestAmount)")
+        print("current streak: \(currentStreak)")
+        print("highest streak: \(highestStreak)")
+        print("")
     }
     
 // Domain ==========================================================================================
-    override var properties: [String] { super.properties + ["name", "goal", "upAmount", "downAmount", "active", "headingUp", "firstDay", "nextTrialDay", "nextTrialAmount", "highestAmount"] }
+    override var properties: [String] { super.properties + ["name", "target", "upAmount", "downAmount", "active", "headingUp", "firstDay", "nextDay", "nextAmount", "highestAmount", "currentStreak", "highestStreak"] }
     override var children: [String] { super.children + ["trials"] }
 }
