@@ -23,14 +23,17 @@ class RetsuButton: UIControl {
         addAction(for: [.touchUpInside, .touchUpOutside]) {
             UIView.animate(withDuration: 0.4) { self.imageView.alpha = 0.2 }
         }
-        addAction {
-            Retsu.specimen.currentEra.report()
+//        addAction {
+//            Retsu.specimen.currentEra.report()
+//            Loom.basket.printDocuments()
 //            Loom.transact {
-//                Retsu.era.currentStreak = 2
-//                Retsu.era.highestStreak = 2
-//                Retsu.era.highestAmount = 3
+//                Retsu.era.currentStreak = 3
+//                Retsu.era.highestStreak = 3
+//                Retsu.era.trials.forEach {
+//                    $0.onTime = true
+//                }
 //            }
-        }
+//        }
     }
     required init?(coder: NSCoder) { fatalError() }
     

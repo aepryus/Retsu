@@ -8,13 +8,15 @@
 import Acheron
 import UIKit
 
-class ViewController: UIViewController {
+class OriginViewController: UIViewController {
     let amountLabel: UILabel = UILabel()
     let buttonBar: UIView = UIView()
     let successButton: UIControl = UIControl()
     let failureButton: UIControl = UIControl()
     let retsuButton: RetsuButton = RetsuButton()
     let retsuInfo: RetsuInfo = RetsuInfo()
+    let historyButton: UIControl = UIControl()
+    let eraButton: UIControl = UIControl()
     
     var isCaughtUp: Bool { Retsu.specimen.currentEra.isCaughtUp }
     
@@ -26,6 +28,7 @@ class ViewController: UIViewController {
             amountLabel.text = "\(Retsu.specimen.currentEra.nextAmount)"
             view.addSubview(buttonBar)
         }
+        retsuInfo.loadData()
     }
 
 // UIViewController ================================================================================
@@ -64,15 +67,31 @@ class ViewController: UIViewController {
         retsuInfo.alpha = 0
         view.addSubview(retsuInfo)
         
+        historyButton.backgroundColor = .blue.shade(0.5)
+        view.addSubview(historyButton)
+        historyButton.addAction {
+            self.present(Retsu.historyViewController, animated: true)
+        }
+        
+        eraButton.backgroundColor = .green.shade(0.5)
+        view.addSubview(eraButton)
+        eraButton.addAction {
+            self.present(Retsu.eraViewController, animated: true)
+        }
+
         loadSpecimen()
     }
     override func viewDidLayoutSubviews() {
-        amountLabel.top(dy: 100*s, size: CGSize(width: 300*s, height: 200*s))
+        amountLabel.top(dy: 170*s, size: CGSize(width: 300*s, height: 200*s))
+
         buttonBar.top(dy: amountLabel.bottom + 8*s, width: 256*s, height:64*s)
-        
         successButton.left(width: (256-64-16)*s, height: 64*s)
         failureButton.right(width: 64*s, height: 64*s)
-        retsuButton.bottom(dy: -100-Screen.safeBottom, width: 80*s, height: 80*s)
-        retsuInfo.top(dy: retsuButton.top-170*s, width: 280*s, height: 140*s)
+        
+        retsuInfo.top(dy: buttonBar.bottom+60*s, width: 280*s, height: 140*s)
+        retsuButton.bottomRight(dx: -20*s, dy: -Screen.safeTop-3*s, width: 50*s, height: 50*s)
+        
+        historyButton.topLeft(dx: 10*s, dy: Screen.safeTop+10*s, width: 30*s, height: 30*s)
+        eraButton.topLeft(dx: 10*s, dy: historyButton.bottom+10*s, width: 30*s, height: 30*s)
     }
 }

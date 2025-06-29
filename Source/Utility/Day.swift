@@ -28,6 +28,8 @@ extension Calendar {
     
     var dayBefore: Day { Day.day(n: n-1) }
     var dayAfter: Day { Day.day(n: n+1) }
+    
+    func format(_ template: String) -> String { date.format(template) }
         
 // Packable ========================================================================================
     required init?(_ text: String) {
@@ -41,6 +43,7 @@ extension Calendar {
 
 // Static ==========================================================================================
     static func - (a: Day, b: Day) -> Int { a.n - b.n }
+    static func == (a: Day, b: Day) -> Bool { a.n == b.n }
     static func < (a: Day, b: Day) -> Bool { a.n < b.n }
     static func > (a: Day, b: Day) -> Bool { a.n > b.n }
 

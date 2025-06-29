@@ -14,9 +14,13 @@ class Retsu {
     
     static var era: Era { specimen.currentEra }
     
+    static let originViewController: OriginViewController = OriginViewController()
+    static let historyViewController: HistoryViewController = HistoryViewController()
+    static let eraViewController: EraViewController = EraViewController()
+
     static func start() {
         print("[ Retsu ] ======================================================================")
-
+        
         let basket: Basket = Basket(SQLitePersist("retsu"))
         Loom.start(basket: basket, namespaces: ["Retsu"])
         var specimenIden: String? = Loom.get(key: "specimenIden")
@@ -29,7 +33,9 @@ class Retsu {
         }
         Retsu.specimen = Loom.selectBy(iden: specimenIden!)
         
-        window.rootViewController = ViewController()
+        window.rootViewController = originViewController
         window.makeKeyAndVisible()
+        
+        Month.test()
     }
 }

@@ -25,6 +25,7 @@ class Era: Domain {
     @objc dynamic var trials: [Trial] = []
     
     var isCaughtUp: Bool { nextDay > .today }
+    var daysBehind: Int { Day.tomorrow-nextDay }
     
     func add(trial: Trial) {
         trials.append(trial)
